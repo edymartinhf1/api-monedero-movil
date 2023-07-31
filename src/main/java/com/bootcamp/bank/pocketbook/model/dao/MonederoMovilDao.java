@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class MonederoMovilDao {
     @Id
     private String id;
-    private String idCLiente; //Debe ser cliente del banco
+    private String idCliente; //Debe ser cliente del banco
     private String numeroCuentaPrincipal;
     private String numeroMonedero;
     private String numeroDocumento;

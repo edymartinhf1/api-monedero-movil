@@ -6,7 +6,7 @@ import lombok.Data;
 public class MonederoMovilPost {
 
 
-    private String idCLiente; //Debe ser cliente del banco
+    private String idCliente; //Debe ser cliente del banco
     private String numeroCuentaPrincipal;
     private String numeroDocumento;
     private String tipoDocumento; // DNI , CEX , PAS =PASAPORTE
