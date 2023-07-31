@@ -17,6 +17,7 @@ public class MonederoMovilDao {
     private String numeroDocumento;
     private String tipoDocumento;
     private String numeroCelular;
+    private String tipoMonedero;  // NOR = Normal  .P2P  = P2P,
     private String correo;
     private String imeiCelular;
     private LocalDateTime fechaCreacion;
