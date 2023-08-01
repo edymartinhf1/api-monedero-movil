@@ -1,5 +1,6 @@
 package com.bootcamp.bank.pocketbook.service.impl;
 
+import com.bootcamp.bank.pocketbook.model.IntercambioP2PTransaccionDto;
 import com.bootcamp.bank.pocketbook.model.dao.IntercambioP2PTransaccionDao;
 import com.bootcamp.bank.pocketbook.model.dao.repository.MonederoMovilRepository;
 import com.bootcamp.bank.pocketbook.model.dao.repository.MonederoInterCambioP2PRepository;
@@ -10,6 +11,7 @@ import com.bootcamp.bank.pocketbook.util.Util;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.UUID;
@@ -49,7 +51,7 @@ public class MonederoP2PServiceImpl implements MonederoP2PService {
      */
     @Override
     public Mono<IntercambioP2PTransaccionDao> acceptP2PTransaction(OperacionP2PAccept operacionP2PAccept) {
-
+        log.info("service"+operacionP2PAccept.toString());
         return monederoMovilRepository.findByIdClienteAndNumeroCelular(operacionP2PAccept.getIdClienteAceptante(), operacionP2PAccept.getNumeroCelularAceptante())
                 .flatMap(monederoMovilDao -> {
                    log.info("monederoMovilDao "+monederoMovilDao.toString());
@@ -57,6 +59,8 @@ public class MonederoP2PServiceImpl implements MonederoP2PService {
                            .flatMap(operacionP2PTransaccionDao -> {
                                UUID uuid= UUID.randomUUID();
                                String idTransaccion=uuid.toString();
+                               operacionP2PTransaccionDao.setFechaAceptacion(Util.getCurrentDate());
+                               operacionP2PTransaccionDao.setFechaAceptacionT(Util.getCurrentDateAsString("yyyy-MM-dd"));
                                operacionP2PTransaccionDao.setIdTransaccion(idTransaccion);
                                operacionP2PTransaccionDao.setNumeroCelularAceptante(operacionP2PAccept.getNumeroCelularAceptante());
                                return monederoOperacionP2PRepository.save(operacionP2PTransaccionDao);
@@ -65,6 +69,10 @@ public class MonederoP2PServiceImpl implements MonederoP2PService {
                 });
     }
 
+    @Override
+    public Flux<IntercambioP2PTransaccionDao> getAllInterchages() {
+        return monederoOperacionP2PRepository.findAll();
+    }
 
 
 }

@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -33,6 +34,16 @@ public class MonederoP2PController {
     public Mono<IntercambioP2PTransaccionDto> interChangeBootCoins(@RequestBody OperacionP2PRequest operacionP2PRequest) {
         return monederoP2PService.interChangeBootCoins(operacionP2PRequest).map(this::fromIntercambioP2PTransaccionDaoToIntercambioP2PTransaccionDto);
     }
+
+    /**
+     * Permite obtener todos los intercambios p2p solicitados
+     * @return
+     */
+    @GetMapping
+    public Flux<IntercambioP2PTransaccionDto> getAllInterchages(){
+        return monederoP2PService.getAllInterchages().map(this::fromIntercambioP2PTransaccionDaoToIntercambioP2PTransaccionDto);
+    }
+
 
     /**
      * Permite aceptar una solicitud de intercambio de Monedero P2P
