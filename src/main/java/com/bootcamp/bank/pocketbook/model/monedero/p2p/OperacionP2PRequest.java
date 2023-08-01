@@ -9,6 +9,6 @@ public class OperacionP2PRequest {
     private String tipoIntercambioP2P; // COM = COMPRA VEN=VENTA
     private String numeroCelular;
     private String numeroCuenta;
-    private String modoPago; // YANKI TRANSFERENCIA
+    private String modoPago; // MON = YANKI TRA =TRANSFERENCIA
     private Double monto;
 }

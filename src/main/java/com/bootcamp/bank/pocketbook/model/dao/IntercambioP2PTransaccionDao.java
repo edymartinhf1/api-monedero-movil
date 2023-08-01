@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
 @Data
-@Document("operacionP2Ptransaciones")
+@Document("operacionP2Ptransacciones")
 public class IntercambioP2PTransaccionDao {
     @Id
     private String id;

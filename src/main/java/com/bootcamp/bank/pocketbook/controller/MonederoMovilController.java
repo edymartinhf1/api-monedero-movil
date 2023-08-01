@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+/**
+ * Clase Monedero
+ */
 @RestController
 @RequestMapping("/monedero")
 @Log4j2

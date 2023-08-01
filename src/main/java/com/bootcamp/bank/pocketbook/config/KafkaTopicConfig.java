@@ -22,7 +22,7 @@ public class KafkaTopicConfig {
     }
 
     @Bean
-    public NewTopic monederoP2PTopic() {return TopicBuilder.name("monederoP2PMovilTopic").build();
+    public NewTopic monederoP2PTopic() {return TopicBuilder.name("monederoP2PMovil").build();
     }
 
 }

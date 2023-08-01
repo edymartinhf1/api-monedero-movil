@@ -8,7 +8,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
+@Component
 @Log4j2
 @RequiredArgsConstructor
 public class KafkaMonederoP2PListener {
@@ -18,7 +20,7 @@ public class KafkaMonederoP2PListener {
     private final MonederoMovilService monederoMovilService;
 
     @KafkaListener(
-            topics = "monederoP2Pmovil",
+            topics = "monederoP2PMovil",
             groupId = "groupId"
     )
     public void consumerMonederoMovil(String tramaKafka) {

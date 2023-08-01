@@ -31,6 +31,7 @@ public class MonederoP2PServiceImpl implements MonederoP2PService {
     @Override
     public Mono<IntercambioP2PTransaccionDao> interChangeBootCoins(OperacionP2PRequest operacionP2PRequest) {
         IntercambioP2PTransaccionDao intercambioP2PTransaccionDao=new IntercambioP2PTransaccionDao();
+        intercambioP2PTransaccionDao.setNumeroCelularSolicitante(operacionP2PRequest.getNumeroCelular());
         intercambioP2PTransaccionDao.setMonto(operacionP2PRequest.getMonto());
         intercambioP2PTransaccionDao.setModoPago(operacionP2PRequest.getModoPago());
         intercambioP2PTransaccionDao.setFechaCreacion(Util.getCurrentDate());
