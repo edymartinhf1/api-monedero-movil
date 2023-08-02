@@ -1,6 +1,5 @@
 package com.bootcamp.bank.pocketbook.service.impl;
 
-import com.bootcamp.bank.pocketbook.model.IntercambioP2PTransaccionDto;
 import com.bootcamp.bank.pocketbook.model.dao.IntercambioP2PTransaccionDao;
 import com.bootcamp.bank.pocketbook.model.dao.repository.MonederoMovilRepository;
 import com.bootcamp.bank.pocketbook.model.dao.repository.MonederoInterCambioP2PRepository;
