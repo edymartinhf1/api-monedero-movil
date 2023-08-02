@@ -3,6 +3,10 @@ package com.bootcamp.bank.pocketbook.model;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+
+/**
+ * Clase Tasa Banco 
+ */
 @Data
 public class TasaBancoPost {
     private String id;

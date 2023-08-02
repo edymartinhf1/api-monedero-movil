@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+/**
+ * Clase Tasa Banco dto
+ */
 @Data
 public class TasaBancoDto {
     private String id;
