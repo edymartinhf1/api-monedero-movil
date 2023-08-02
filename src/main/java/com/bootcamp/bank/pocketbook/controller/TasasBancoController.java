@@ -13,6 +13,7 @@ import reactor.core.publisher.Mono;
 
 /**
  * Permite la creacion y Manejo de Tasas Monedero P2P
+ * Clase Aceptacion Intercambio P2P
  */
 @RestController
 @RequestMapping("/monedero/p2p/tasas")

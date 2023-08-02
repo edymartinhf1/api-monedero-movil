@@ -7,7 +7,7 @@ import lombok.Data;
  */
 @Data
 public class OperacionP2PAccept {
-    private String id;
+    private String idInterCambio;
     private String idClienteAceptante; // Aceptante
     private String numeroCelularAceptante;
 }

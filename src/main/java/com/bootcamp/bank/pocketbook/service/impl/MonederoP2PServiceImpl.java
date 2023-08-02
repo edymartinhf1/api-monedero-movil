@@ -1,5 +1,6 @@
 package com.bootcamp.bank.pocketbook.service.impl;
 
+import com.bootcamp.bank.pocketbook.model.IntercambioP2PTransaccionDto;
 import com.bootcamp.bank.pocketbook.model.dao.IntercambioP2PTransaccionDao;
 import com.bootcamp.bank.pocketbook.model.dao.repository.MonederoMovilRepository;
 import com.bootcamp.bank.pocketbook.model.dao.repository.MonederoInterCambioP2PRepository;
@@ -50,14 +51,14 @@ public class MonederoP2PServiceImpl implements MonederoP2PService {
      */
     @Override
     public Mono<IntercambioP2PTransaccionDao> acceptP2PTransaction(OperacionP2PAccept operacionP2PAccept) {
-        log.info("service"+operacionP2PAccept.toString());
+        log.info("operacionP2PAccept = "+operacionP2PAccept.toString());
         return monederoMovilRepository.findByIdClienteAndNumeroCelular(operacionP2PAccept.getIdClienteAceptante(), operacionP2PAccept.getNumeroCelularAceptante())
                 .flatMap(monederoMovilDao -> {
                    log.info("monederoMovilDao "+monederoMovilDao.toString());
-                   return monederoOperacionP2PRepository.findById(operacionP2PAccept.getId())
+                   return monederoOperacionP2PRepository.findById(operacionP2PAccept.getIdInterCambio())
                            .flatMap(operacionP2PTransaccionDao -> {
                                UUID uuid= UUID.randomUUID();
-                               String idTransaccion=uuid.toString();
+                               String idTransaccion=uuid.toString(); // transaccion
                                operacionP2PTransaccionDao.setFechaAceptacion(Util.getCurrentDate());
                                operacionP2PTransaccionDao.setFechaAceptacionT(Util.getCurrentDateAsString("yyyy-MM-dd"));
                                operacionP2PTransaccionDao.setIdTransaccion(idTransaccion);
@@ -71,6 +72,11 @@ public class MonederoP2PServiceImpl implements MonederoP2PService {
     @Override
     public Flux<IntercambioP2PTransaccionDao> getAllInterchages() {
         return monederoOperacionP2PRepository.findAll();
+    }
+
+    @Override
+    public Flux<IntercambioP2PTransaccionDao> getAllInterchagesAccepted() {
+        return monederoOperacionP2PRepository.findAll().filter(intercambioP2PTransaccionDao -> intercambioP2PTransaccionDao.getIdTransaccion()!=null);
     }
 
 

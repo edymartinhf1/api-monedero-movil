@@ -36,12 +36,21 @@ public class MonederoP2PController {
     }
 
     /**
-     * Permite obtener todos los intercambios p2p solicitados
+     * Permite consultar y obtener todos los intercambios p2p solicitados
      * @return
      */
     @GetMapping
     public Flux<IntercambioP2PTransaccionDto> getAllInterchages(){
         return monederoP2PService.getAllInterchages().map(this::fromIntercambioP2PTransaccionDaoToIntercambioP2PTransaccionDto);
+    }
+
+    /**
+     * Permite consultar y obtener intercambios aceptados
+     * @return
+     */
+    @GetMapping
+    public Flux<IntercambioP2PTransaccionDto> getAllInterchagesAccepted(){
+        return monederoP2PService.getAllInterchagesAccepted().map(this::fromIntercambioP2PTransaccionDaoToIntercambioP2PTransaccionDto);
     }
 
 
