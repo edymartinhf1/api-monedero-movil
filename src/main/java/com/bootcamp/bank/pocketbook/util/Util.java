@@ -49,4 +49,10 @@ public class Util {
     public static int generateRandomNumber(int min, int max) {
         return random.nextInt(max - min + 1) + min;
     }
+
+    public static LocalDateTime getLocalDatefromString(String fecha) {
+        String format="yyyy-MM-dd HH:mm:ss";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
+        return LocalDateTime.parse(fecha, formatter);
+    }
 }

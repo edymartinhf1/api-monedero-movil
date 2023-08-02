@@ -14,6 +14,8 @@ public class TasaBancoDao {
     private String tipoTasa;
     private LocalDateTime fechaCreacion;
     private String fechaCreacionT;
+    private String fechaTasaT;
+    private LocalDateTime fechaTasa;
     private Double tipoCambio;
 
 }

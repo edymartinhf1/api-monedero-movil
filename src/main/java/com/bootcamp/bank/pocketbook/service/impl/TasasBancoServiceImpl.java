@@ -19,6 +19,7 @@ public class TasasBancoServiceImpl implements TasasBancoService {
 
     @Override
     public Mono<TasaBancoDao> saveTasa(TasaBancoDao tasaBancoDao) {
+        tasaBancoDao.setFechaTasa(Util.getLocalDatefromString(tasaBancoDao.getFechaTasaT()));
         tasaBancoDao.setFechaCreacion(Util.getCurrentDate());
         tasaBancoDao.setFechaCreacionT(Util.getCurrentDateAsString("yyyy-MM-dd"));
         return tasasBancoRepository.save(tasaBancoDao);

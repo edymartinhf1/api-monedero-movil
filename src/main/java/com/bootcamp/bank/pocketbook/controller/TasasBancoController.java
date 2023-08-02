@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
  * Permite la creacion y Manejo de Tasas Monedero P2P
  */
 @RestController
-@RequestMapping("/monedero/tasas")
+@RequestMapping("/monedero/p2p/tasas")
 @Log4j2
 @RequiredArgsConstructor
 public class TasasBancoController {
